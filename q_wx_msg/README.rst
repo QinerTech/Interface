@@ -1,4 +1,4 @@
-AliISV interface
+Qiner Wechat Messaging
 =========================
 
 
