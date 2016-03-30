@@ -4,6 +4,9 @@ from openerp import models, fields
 from wechat_sdk import WechatConf
 from wechat_sdk import WechatBasic
 
+import base64#file encode
+import urllib2 #file download from url
+
 conf = WechatConf(
     token='your_token',
     appid='your_appid',
@@ -18,9 +21,27 @@ class ResUsersWechatMsg(models.Model):
     _inherit = 'res.users'
 
     openid = fields.Char(
-        string= 'Wechat openId',
-        required = False,
-        index= False,
-        size= 250,
-        default= None,
+        string='Wechat openId',
+        required=False,
+        index=False,
+        size=250,
+        default=None,
     )
+
+    image = fields.binary(
+        string='Image',
+        frequired=True
+    )
+
+    web = fields.char(
+        string='image url',
+        help='Automatically sanitized HTML contents'
+    )
+
+    def onchange_image(self, cr, uid, ids, web, context=None):
+        link = web
+        photo = base64.encodestring(urllib2.urlopen(link).read())
+        val = {
+            'image': photo,
+        }
+        return {'value': val}

@@ -3,7 +3,7 @@
 
 
 {
-    'name': 'Qiner Wechat Notification',
+    'name': 'Qiner Wechat Messaging',
     'version': '1.0',
     'category': ' ',
     'summary': '',

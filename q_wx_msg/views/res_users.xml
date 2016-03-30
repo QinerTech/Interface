@@ -7,11 +7,15 @@
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//field[@name='tz']" position="after">
-                        <field name="openid"/>
-                    </xpath>
-                </data>
+                <xpath expr="//page[@name='access_rights']" position="after">
+                    <page string="Wechat">
+                        <group>
+                            <field name="openid" />
+                            <field name="image" widget="image" width="110" height="70" />
+                            <field name="web" widget="url" on_change="onchange_image(web,context)"/>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
 
@@ -21,11 +25,15 @@
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
             <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//field[@name='company_id']" position="before">
-                        <field name="openid" readonly="0"/>
-                    </xpath>
-                </data>
+                <xpath expr="//page[@name='access_rights']" position="after">
+                    <page string="wechat">
+                        <group>
+                            <field name="openid" />
+                            <field name="image" widget="image" width="110" height="70" />
+                            <field name="web" widget="url" on_change="onchange_image(web,context)"/>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
     </data>
