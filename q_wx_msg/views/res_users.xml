@@ -10,6 +10,8 @@
                 <xpath expr="//page[@name='access_rights']" position="after">
                     <page string="Wechat">
                         <group>
+                            <button string="bind" type="object" name="bind_wechat"
+                                attrs="{'invisible': [('openid','=',True)]}"/>
                             <field name="openid" />
                             <field name="image" widget="image" width="110" height="70" />
                             <field name="web" widget="url" on_change="onchange_image(web,context)"/>
@@ -20,6 +22,7 @@
         </record>
 
         <!-- Update Preferences form !-->
+        <!--
         <record id="view_users_form_preferences_wx_msg" model="ir.ui.view">
             <field name="name">res.users.preferences.form</field>
             <field name="model">res.users</field>
@@ -36,5 +39,6 @@
                 </xpath>
             </field>
         </record>
+        -->
     </data>
 </openerp>

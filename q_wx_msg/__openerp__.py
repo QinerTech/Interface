@@ -5,8 +5,9 @@
 {
     'name': 'Qiner Wechat Messaging',
     'version': '1.0',
-    'category': ' ',
+    'category': 'Social Network',
     'summary': '',
+    'application': True,
     'author': 'Qiner Tech',
     'website': 'http://www.qineronline.com/',
     'description': """

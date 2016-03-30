@@ -12,7 +12,7 @@ conf = WechatConf(
     appid='your_appid',
     appsecret='your_appsecret',
     encrypt_mode='safe',  # 可选项：normal/compatible/safe，分别对应于 明文/兼容/安全 模式
-    encoding_aes_key='your_encoding_aes_key'  # 如果传入此值则必须保证同时传入 token, appid
+    encoding_aes_key='o4SvngyCmLXyiQTFkHrixEjv5poEz53LkOrtucdupmv'  # 如果传入此值则必须保证同时传入 token, appid
 )
 
 wechat = WechatBasic(conf=conf)
@@ -28,15 +28,18 @@ class ResUsersWechatMsg(models.Model):
         default=None,
     )
 
-    image = fields.binary(
+    image = fields.Binary(
         string='Image',
         frequired=True
     )
 
-    web = fields.char(
+    web = fields.Char(
         string='image url',
         help='Automatically sanitized HTML contents'
     )
+
+    def bind_wechat(self, cr, uid, ids, web, context=None):
+        return False
 
     def onchange_image(self, cr, uid, ids, web, context=None):
         link = web
